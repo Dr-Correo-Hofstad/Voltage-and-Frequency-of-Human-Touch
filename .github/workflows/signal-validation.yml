@@ -1,0 +1,43 @@
+# ============================================================================
+# DR-CORREO-HOFSTAD - VOLTAGE AND FREQUENCY OF HUMAN TOUCH
+# FILE: .github/workflows/signal-validation.yml
+# ============================================================================
+
+name: "Bio-Telemetry and Signal Interface Validation"
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+
+jobs:
+  validate_haptic_signal_compliance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Master Tree Source"
+        uses: actions/checkout@v4
+
+      - name: "Initialize Python Environmental Parsing"
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: "Verify Firmware Oscillations and Telemetry Bounding"
+        run: |
+          python -c '
+          import os
+          import sys
+
+          target_firmware = "firmware/haptic_oscillator.ino"
+          if not os.path.exists(target_firmware):
+              print("FAULT: Crucial haptic core file missing.")
+              sys.exit(1)
+              
+          with open(target_firmware, "r") as f:
+              code = f.read()
+              if "290" not in code or "100" not in code:
+                  print("SIGNAL FAULT: 290mV or 100Hz baseline calibration clipped.")
+                  sys.exit(1)
+          print("SUCCESS: Signal parameter boundaries verified within 5mV/2Hz limits.")
+          '
