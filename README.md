@@ -17,7 +17,7 @@ The technical architecture of this repository is calibrated to the dynamic diffe
 | **Delta Resolution (Voltage)** | `5 mV` | The initial differential threshold observed between distinct subjects prior to resonant stabilization. |
 | **Delta Resolution (Frequency)** | `2 Hz` | The phase-shift variation observed prior to cross-subject harmonic locking. |
 
-### ⚡ Dynamics of Coaxial Stabilization
+### Dynamics of Coaxial Stabilization
 Data confirms that during touch contact, separate bio-electric potentials do not settle on an average medium. Instead, the interaction features a **Forced Pull-Up Lockout**, wherein the joint circuit dynamically stabilizes upon the higher baseline potential. This behavioral variable governs the feedback loops of our automated simulation micro-controllers.
 
 ---
