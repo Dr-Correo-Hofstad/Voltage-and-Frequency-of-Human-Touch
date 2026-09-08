@@ -1,0 +1,17 @@
+# ============================================================================
+# DR-CORREO-HOFSTAD - VOLTAGE AND FREQUENCY OF HUMAN TOUCH
+# FILE: matrices/haptic_specs.yml
+# ============================================================================
+
+Haptic_Device_Configuration:
+  Firmware_Target: "firmware/haptic_oscillator.ino"
+  Tooling_Path_Source: "matrices/VT_Sacred_Handprint_v1.dst"
+  Conductivity_Layer: "99.9_Percent_Pure_Silver_Plated_Hemp_Thread"
+  Base_Substrate: "100_Percent_Organic_Bamboo_Viscose_Interlock"
+
+Signal_Resonance_Parameters:
+  Target_Voltage_Peak_MV: 290
+  Target_Frequency_HZ: 100
+  Delta_Resolution_MV: 5
+  Delta_Resolution_HZ: 2
+  Stabilization_Protocol: "Forced_Pull_Up_Lockout_On_Higher_Potential"
